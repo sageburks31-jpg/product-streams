@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Program {
 
@@ -39,16 +40,15 @@ public class Program {
     private static List<Product> getProductsByCategory(List<Product> products, String category) {
         // STEP A (loop): make an empty list, loop through products, and add each one
         //   whose category matches (equalsIgnoreCase). Return the list.
-        List<Product> newProduct = new ArrayList<>();
 
-        for (Product product:products) {
-            if (product.getCategory().equals(category)) {
-                newProduct.add(product);
-            }
-        }
+//        for (Product product:products) {
+//            if (product.getCategory().equalsIgnoreCase(category)) {
+//                productsByCategory.add(product);
+//            }
+//        }
         // STEP B (stream): products.stream(), then .filter(...), then .toList()
 
-        return newProduct; // replace this line
+        return products.stream().filter(product -> product.getCategory().equalsIgnoreCase(category)).toList(); // replace this line
     }
 
     // TASK 2: the total of every product's price
