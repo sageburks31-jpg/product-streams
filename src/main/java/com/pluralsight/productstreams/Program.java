@@ -39,40 +39,63 @@ public class Program {
     private static List<Product> getProductsByCategory(List<Product> products, String category) {
         // STEP A (loop): make an empty list, loop through products, and add each one
         //   whose category matches (equalsIgnoreCase). Return the list.
+        List<Product> newProduct = new ArrayList<>();
+
+        for (Product product:products) {
+            if (product.getCategory().equals(category)) {
+                newProduct.add(product);
+            }
+        }
         // STEP B (stream): products.stream(), then .filter(...), then .toList()
 
-        return new ArrayList<>(); // replace this line
+        return newProduct; // replace this line
     }
 
     // TASK 2: the total of every product's price
     private static BigDecimal getTotalInventoryValue(List<Product> products) {
         // STEP A (loop): start a total at BigDecimal.ZERO, and add each price with .add()
+        BigDecimal bigDecimal = BigDecimal.ZERO;
+        for (Product product: products) {
+            bigDecimal = bigDecimal.add(product.getPrice());
+        }
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .reduce(BigDecimal.ZERO, ...) to add them up
 
-        return BigDecimal.ZERO; // replace this line
+        return bigDecimal; // replace this line
     }
 
     // TASK 3: how many products are in one category
     private static long countProductsInCategory(List<Product> products, String category) {
         // STEP A (loop): a count that starts at 0, plus 1 for each match
+        int count = 0;
+        for (Product product: products) {
+            if (product.getCategory().equals(category)) {
+                count += 1;
+            }
+        }
         // STEP B (stream): .filter(...), then .count()
-
-        return 0; // replace this line
+        return count; // replace this line
     }
 
     // TASK 4: a list of just the prices
     private static List<BigDecimal> getPrices(List<Product> products) {
         // STEP A (loop): an empty List<BigDecimal>; add each product's price
+        List<BigDecimal> listOfPrices =new ArrayList<>();
+        for (Product product: products) {
+            listOfPrices.add(product.getPrice());
+        }
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .toList()
 
-        return new ArrayList<>(); // replace this line
+        return listOfPrices; // replace this line
     }
 
     // TASK 5: print each product
     private static void printProducts(List<Product> products) {
         // STEP A (loop): a for-each loop that prints each product
+        for (Product product: products){
+            System.out.println(product.toString());
+        }
         // STEP B: products.forEach(...) with a lambda
 
     }

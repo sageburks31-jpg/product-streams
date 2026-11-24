@@ -3,9 +3,9 @@ package com.pluralsight.productstreams;
 import java.math.BigDecimal;
 
 public class Product {
-    private String name;
-    private String category;
-    private BigDecimal price;
+    private final String name;
+    private final String category;
+    private final BigDecimal price;
 
     public Product(String name, String category, BigDecimal price) {
         this.name = name;
@@ -21,6 +21,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("%-14s %-12s $%8.2f", name, category, price);
+        return String.format("%-14s %-12s $%8.2f", getName(), category, price);
     }
 }
