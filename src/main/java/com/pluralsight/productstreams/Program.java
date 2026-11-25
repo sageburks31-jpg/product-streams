@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class Program {
 
@@ -55,13 +56,13 @@ public class Program {
     private static BigDecimal getTotalInventoryValue(List<Product> products) {
         // STEP A (loop): start a total at BigDecimal.ZERO, and add each price with .add()
         BigDecimal bigDecimal = BigDecimal.ZERO;
-        for (Product product: products) {
-            bigDecimal = bigDecimal.add(product.getPrice());
-        }
+//        for (Product product: products) {
+//            bigDecimal = bigDecimal.add(product.getPrice());
+//        }
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .reduce(BigDecimal.ZERO, ...) to add them up
-
-        return bigDecimal; // replace this line
+//        return bigDecimal; // replace this line
+        return products.stream().map(Product::getPrice).reduce(bigDecimal,BigDecimal::add);
     }
 
     // TASK 3: how many products are in one category
@@ -74,20 +75,20 @@ public class Program {
             }
         }
         // STEP B (stream): .filter(...), then .count()
-        return count; // replace this line
+        return products.stream().map(Product::getCategory).filter(Predicate.isEqual(category)).count(); // replace this line
     }
 
     // TASK 4: a list of just the prices
     private static List<BigDecimal> getPrices(List<Product> products) {
         // STEP A (loop): an empty List<BigDecimal>; add each product's price
-        List<BigDecimal> listOfPrices =new ArrayList<>();
-        for (Product product: products) {
-            listOfPrices.add(product.getPrice());
-        }
+//        List<BigDecimal> listOfPrices =new ArrayList<>();
+//        for (Product product: products) {
+//            listOfPrices.add(product.getPrice());
+//        }
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .toList()
 
-        return listOfPrices; // replace this line
+        return products.stream().map(Product::getPrice).toList(); // replace this line
     }
 
     // TASK 5: print each product
