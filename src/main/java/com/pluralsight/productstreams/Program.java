@@ -94,11 +94,11 @@ public class Program {
     // TASK 5: print each product
     private static void printProducts(List<Product> products) {
         // STEP A (loop): a for-each loop that prints each product
-        for (Product product: products){
-            System.out.println(product.toString());
-        }
+//        for (Product product: products){
+//            System.out.println(product.toString());
+//        }
         // STEP B: products.forEach(...) with a lambda
-
+        products.forEach(Product -> System.out.println(Product.toString()));
     }
 
     private static List<Product> getInventory() {
